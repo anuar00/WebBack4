@@ -1,0 +1,78 @@
+# My App
+
+## Description
+A simple web application built with Node.js, Express, and MongoDB that allows users to register, log in, upload images, and manage user accounts.
+
+## Features
+- User authentication (Register/Login/Logout)
+- Image upload and deletion
+- User management (Admin can view and delete users)
+- Session-based authentication
+- EJS templating engine for rendering views
+- MongoDB for storing user data
+
+## Technologies Used
+- Node.js
+- Express.js
+- MongoDB (Mongoose)
+- EJS (Embedded JavaScript Templates)
+- Multer (File Uploads)
+- bcrypt (Password Hashing)
+- express-session (Session Management)
+
+## Installation
+### Prerequisites
+- Node.js installed
+- MongoDB Atlas account or local MongoDB instance
+- GitHub repository (if using version control)
+
+### Steps
+1. Clone the repository:
+   ```sh
+   git clone <repository_url>
+   cd <repository_folder>
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Create a `.env` file in the root directory and add:
+   ```env
+   MONGO_URI=your_mongodb_connection_string
+   SESSION_SECRET=your_secret_key
+   ```
+4. Run the server:
+   ```sh
+   npm start
+   ```
+5. Open the app in a browser:
+   ```
+   http://localhost:3000
+   ```
+
+## Usage
+1. Register a new account.
+2. Log in with your credentials.
+3. Upload and manage images.
+4. Admin can view and delete users.
+
+## File Structure
+```
+my-app/
+│-- public/
+│   │-- uploads/ (Uploaded files)
+│   │-- styles.css
+│-- views/
+│   │-- layout.ejs
+│   │-- index.ejs
+│   │-- login.ejs
+│   │-- register.ejs
+│   │-- users.ejs
+│-- server.js
+│-- .env
+│-- .gitignore
+│-- package.json
+│-- README.md
+```
+
+

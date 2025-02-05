@@ -1,0 +1,26 @@
+<h2>Welcome <% if (user) { %> <%= user.username %> <% } %>!</h2>
+
+<% if (!user) { %>
+    <p><a href="/login">Login</a> or <a href="/register">Register</a> to continue.</p>
+<% } else { %>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="fileInput" class="upload-label">Выберите файл</label>
+        <input type="file" name="photo" id="fileInput">
+        <button type="submit" class="upload-button">Загрузить</button>
+    </form>
+    
+
+    <h3>Uploaded Photos:</h3>
+    <div class="gallery">
+        <% photos.forEach(photo => { %>
+            <div class="photo-item">
+                <img src="<%= photo %>" alt="Uploaded Photo">
+                <form action="/delete-photo" method="POST" style="display:inline;">
+                    <input type="hidden" name="photoPath" value="<%= photo %>">
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+            </div>
+        <% }); %>
+    </div>
+    
+<% } %>
