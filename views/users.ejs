@@ -1,10 +1,14 @@
-<h2>User List</h2>
-<ul>
+<h2 class="user-list-title">User List</h2>
+<ul class="user-list">
     <% users.forEach(user => { %>
-        <li><%= user.username %> 
-            <form action="/users/delete/<%= user._id %>" method="POST" style="display:inline;">
-                <button type="submit">Delete</button>
-            </form>
+        <li class="user-item">
+            <img src="<%= user.avatar %>" alt="Avatar" class="profile-avatar">
+            <a href="/profile/<%= user.username %>" class="user-link"><%= user.username %></a>
+            <% if (user.role !== 'admin' && currentUser.role === 'admin') { %>
+                <form action="/users/delete/<%= user._id %>" method="POST" style="display:inline;" class="delete-user-form">
+                    <button type="submit" class="delete-user-button">Delete</button>
+                </form>
+            <% } %>
         </li>
     <% }); %>
 </ul>

@@ -1,78 +1,68 @@
-# My App
+# Blog Platform
 
 ## Description
-A simple web application built with Node.js, Express, and MongoDB that allows users to register, log in, upload images, and manage user accounts.
+This project is a blogging platform where users can create, edit, and delete their posts. 
+Administrators have additional privileges to manage users and their content. 
+The web application is built using Node.js, Express.js, and MongoDB Atlas, with EJS for templating.
 
 ## Features
-- User authentication (Register/Login/Logout)
-- Image upload and deletion
-- User management (Admin can view and delete users)
-- Session-based authentication
-- EJS templating engine for rendering views
-- MongoDB for storing user data
-
-## Technologies Used
-- Node.js
-- Express.js
-- MongoDB (Mongoose)
-- EJS (Embedded JavaScript Templates)
-- Multer (File Uploads)
-- bcrypt (Password Hashing)
-- express-session (Session Management)
+- User registration and authentication with role selection (user or administrator)
+- Creating, editing, and deleting blog posts
+- Displaying a list of blogs on the main page
+- Administrators can manage users and delete their blogs
+- Support for uploading user avatars
+- Viewing author profiles
+- Structured routing and templating system
 
 ## Installation
-### Prerequisites
-- Node.js installed
-- MongoDB Atlas account or local MongoDB instance
-- GitHub repository (if using version control)
-
-### Steps
 1. Clone the repository:
    ```sh
-   git clone <repository_url>
-   cd <repository_folder>
+   git clone https://github.com/anuar00/BlogsPlatform.git
+   cd your-repo
    ```
 2. Install dependencies:
    ```sh
    npm install
    ```
-3. Create a `.env` file in the root directory and add:
+3. Create a `.env` file and add the required environment variables:
    ```env
-   MONGO_URI=your_mongodb_connection_string
-   SESSION_SECRET=your_secret_key
+   MONGO_URI=your_mongodb_atlas_uri
+   PORT=3000
    ```
-4. Run the server:
+4. Start the server:
    ```sh
    npm start
    ```
-5. Open the app in a browser:
-   ```
-   http://localhost:3000
-   ```
 
-## Usage
-1. Register a new account.
-2. Log in with your credentials.
-3. Upload and manage images.
-4. Admin can view and delete users.
+## Project Structure
+```
+models/
+  ├── Blog.js
+  ├── User.js
+public/
+  ├── uploads/
+  ├── styles.css
+routes/
+  ├── profile.js
+views/
+  │── index.ejs
+  │── layout.ejs
+  │── login.ejs
+  │── profile.ejs
+  │── register.ejs
+  │── users.ejs
+.env
+package.json
+package-lock.json
+README.md
+server.js
+```
 
-## File Structure
-```
-my-app/
-│-- public/
-│   │-- uploads/ (Uploaded files)
-│   │-- styles.css
-│-- views/
-│   │-- layout.ejs
-│   │-- index.ejs
-│   │-- login.ejs
-│   │-- register.ejs
-│   │-- users.ejs
-│-- server.js
-│-- .env
-│-- .gitignore
-│-- package.json
-│-- README.md
-```
+## Technologies Used
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB Atlas
+- **Templating:** EJS
+- **Styling:** CSS
+- **File Storage:** Multer (for avatar uploads)
 
 

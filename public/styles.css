@@ -2,46 +2,43 @@ body {
     font-family: 'Poppins', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
     text-align: center;
-    background-image: url('02.jpg'); 
-    background-size: cover;  
-    background-position: center center; 
-    background-attachment: fixed; 
 }
 
 nav {
-    background: rgba(243, 152, 214, 0.8); 
+    background: linear-gradient(90deg, #374785, #a8d0e6);
     color: white;
-    padding: 15px 20px;
+    padding: 20px;
     display: flex;
-    justify-content: center;
-    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 nav a {
-    color: black;
+    color: white;
     font-size: 16px;
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 8px 12px;
+    padding: 10px 15px;
     border-radius: 5px;
-    transition: background 0.3s;
+    transition: transform 0.3s, background 0.3s;
 }
 
 nav a:hover {
-    background: rgba(234, 55, 177, 0.8);
+    background: rgba(168, 208, 230, 0.8);
+    transform: scale(1.1);
 }
 
 .container {
-    max-width: 400px;
-    margin: 40px auto;
-    background: rgba(243, 152, 214, 0.8);
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1; 
+    max-width: 600px;
+    margin: 50px auto;
+    background: linear-gradient(135deg, #a8d0e6, #f76c6c);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     position: relative;
 }
 
@@ -55,34 +52,32 @@ input {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+    border: none;
+    border-radius: 8px;
     font-size: 14px;
-    transition: border 0.3s;
+    transition: box-shadow 0.3s;
 }
 
 input:focus {
-    border-color: rgba(234, 55, 177, 0.8);
-    box-shadow: 0 0 8px rgba(234, 55, 177, 0.5);
+    box-shadow: 0 0 10px rgba(247, 108, 108, 0.8);
     outline: none;
 }
-
 
 button {
     width: 100%;
     padding: 12px;
-    background: rgba(234, 55, 177, 0.8);
+    background: linear-gradient(90deg, #f76c6c, #ff9a9e);
     color: white;
     font-size: 16px;
     font-weight: bold;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: transform 0.3s;
 }
 
 button:hover {
-    background: rgba(234, 55, 177, 0.8);
+    transform: scale(1.05);
 }
 
 button:active {
@@ -91,32 +86,33 @@ button:active {
 
 @media (max-width: 500px) {
     .container {
-        width: 90%;
+        width: 95%;
     }
 }
 
 .error-message {
     background-color: #f8d7da;
     color: #721c24;
-    border: 1px solid #f5c6cb;
-    padding: 10px;
+    border-left: 5px solid #f5c6cb;
+    padding: 12px;
     margin-bottom: 15px;
-    border-radius: 5px;
+    border-radius: 6px;
 }
 
 .gallery {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
     margin-top: 20px;
+    justify-content: center;
 }
 
 .gallery img {
-    width: 150px;
-    height: 150px;
+    width: 170px;
+    height: 170px;
     object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .upload-container {
@@ -126,18 +122,18 @@ button:active {
 
 .upload-label {
     display: inline-block;
-    background-color: rgba(234, 55, 177, 0.8);
+    background: linear-gradient(90deg, #f76c6c, #ff9a9e);
     color: white;
     font-size: 16px;
     font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 6px;
+    padding: 12px 24px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: transform 0.3s;
 }
 
 .upload-label:hover {
-    background-color: rgba(200, 40, 150, 0.8);
+    transform: scale(1.05);
 }
 
 #fileInput {
@@ -147,35 +143,128 @@ button:active {
 .upload-button {
     display: inline-block;
     margin-top: 10px;
-    background-color: rgba(234, 55, 177, 0.8);
+    background: linear-gradient(90deg, #f76c6c, #ff9a9e);
     color: white;
     font-size: 16px;
     font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 6px;
+    padding: 12px 24px;
+    border-radius: 8px;
     border: none;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: transform 0.3s;
 }
 
 .upload-button:hover {
-    background-color: rgba(200, 40, 150, 0.8);
+    transform: scale(1.05);
 }
-
 
 .delete-button {
     margin-top: 10px;
-    background-color: rgba(200, 40, 150, 0.8);
+    background: linear-gradient(90deg, #f6416c, #d63484);
     color: white;
     font-size: 14px;
     font-weight: bold;
-    padding: 6px 12px;
-    border-radius: 6px;
+    padding: 8px 16px;
+    border-radius: 8px;
     border: none;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: transform 0.3s;
 }
 
 .delete-button:hover {
-    background-color: rgba(180, 30, 130, 0.8);
+    transform: scale(1.05);
+}
+
+.blog-section {
+    margin-top: 40px;
+    padding: 20px;
+    background: linear-gradient(135deg, #fcb69f, #ff9a9e);
+    border-radius: 16px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.blog-section h3 {
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.blog-form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+    resize: none;
+}
+
+.blog-form button {
+    margin-top: 10px;
+}
+
+
+.profile-container form {
+    margin-top: 15px;
+}
+
+.profile-container input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.profile-container button {
+    margin-top: 10px;
+}
+
+.input-file, .input-text {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+
+.profile-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 40px;
+    background: linear-gradient(135deg, #fcb69f, #ff9a9e);
+    border-radius: 16px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 20px auto;
+}
+
+.blog-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 20px auto;
+}
+
+.profile-details {
+    font-size: 18px;
+    color: #374785;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.profile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
 }

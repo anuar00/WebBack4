@@ -1,23 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My App</title>
+    <title>Blogs App</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/users">Users</a> 
-        <% if (!user) { %>
-            <a href="/login">Login</a>
-            <a href="/register">Register</a>
-        <% } else { %>
-            <a href="/logout">Logout</a>
-        <% } %>
+    <nav class="nav">
+        <div class="nav-left">
+            <a href="/" class="nav-link">Main</a>
+            <% if (user && user.role === 'admin') { %>
+                <a href="/users" class="nav-link">Users</a>
+            <% } %>
+        </div>
+        <div class="nav-right">
+            <% if (!user) { %>
+                <a href="/login" class="nav-link">Log in</a>
+                <a href="/register" class="nav-link">Register</a>
+            <% } else { %>
+                <a href="/profile/<%= user.username %>" class="nav-link">Profile</a>
+                <a href="/logout" class="nav-link">Log out</a>
+            <% } %>
+        </div>
     </nav>
-    
     <div class="container">
         <%- body %>
     </div>

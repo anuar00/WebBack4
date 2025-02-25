@@ -1,26 +1,18 @@
-<h2>Welcome <% if (user) { %> <%= user.username %> <% } %>!</h2>
-
+<h2 class="welcome-message">Welcome <% if (user) { %> <%= user.username%><%}%>!!!</h2>
+<h3 class="welcome-message">This is a website where by creating and publishing blogs you can express yourself and share your thoughts with other users.  Whether you're here to write or read, we'd love to see you!</h3>
 <% if (!user) { %>
-    <p><a href="/login">Login</a> or <a href="/register">Register</a> to continue.</p>
+    <p class="auth-links"><a href="/login">Login</a> or <a href="/register">Register</a> to continue.</p>
 <% } else { %>
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-        <label for="fileInput" class="upload-label">Выберите файл</label>
-        <input type="file" name="photo" id="fileInput">
-        <button type="submit" class="upload-button">Загрузить</button>
-    </form>
-    
-
-    <h3>Uploaded Photos:</h3>
-    <div class="gallery">
-        <% photos.forEach(photo => { %>
-            <div class="photo-item">
-                <img src="<%= photo %>" alt="Uploaded Photo">
-                <form action="/delete-photo" method="POST" style="display:inline;">
-                    <input type="hidden" name="photoPath" value="<%= photo %>">
-                    <button type="submit" class="delete-button">Delete</button>
-                </form>
+    <h3 class="blog-list-title">Blogs:</h3>
+    <div id="blog-list" class="blog-container">
+        <% blogs.forEach(blog => { %>
+            <div class="blog-item">
+                <p class="blog-content">
+                    <img src="<%= blog.avatar %>" alt="Avatar" class="blog-avatar"> 
+                    <strong><a href="/profile/<%= blog.username %>" class="blog-author"><%= blog.username %></a>:</strong> <%= blog.content %>
+                </p>
+                <small class="blog-date"><%= new Date(blog.createdAt).toLocaleString() %></small>
             </div>
-        <% }); %>
+        <% }) %>
     </div>
-    
 <% } %>

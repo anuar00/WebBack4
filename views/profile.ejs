@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Blogs App</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-left">
+        <a href="/" class="nav-link">Main</a>
+        <% if (currentUser && currentUser.role === 'admin') { %>
+            <a href="/users" class="nav-link">Users</a>
+        <% } %>
+    </div>
+    <div class="nav-right">
+        <% if (!currentUser) { %>
+            <a href="/login" class="nav-link">Log in</a>
+            <a href="/register" class="nav-link">Register</a>
+        <% } else { %>
+            <a href="/profile/<%= currentUser.username %>" class="nav-link">Profile</a>
+            <a href="/logout" class="nav-link">Log out</a>
+        <% } %>
+    </div>
+</nav>
+
+<div class="container profile-container">
+    <% if (!isCurrentUser) { %>
+        <h2 class="message-title"><%= userProfile.username %>'s profile</h2>
+    <% } else { %>
+        <h2 class="welcome-message">Your profile</h2>
+    <% } %>
+
+    <img src="<%= (userProfile.avatar) ? userProfile.avatar : '/uploads/default-avatar.png' %>" alt="Avatar" class="profile-avatar">
+
+    <% if (isCurrentUser) { %>
+        <form action="/profile/upload-avatar" method="POST" enctype="multipart/form-data" class="profile-actions">
+            <label for="fileInput" class="upload-label">Choose Avatar</label>
+            <input type="file" id="fileInput" name="avatar" class="input-file">
+            <button type="submit">Upload Avatar</button>
+        </form>
+        <% if (error) { %>
+            <p class="error-message"><%= error %></p>
+        <% } %>
+
+        <form action="/profile/edit" method="POST" class="profile-actions">
+            <input type="text" name="username" value="<%= userProfile.username %>" class="input-text">
+            <button type="submit">Edit Username</button>
+        </form>
+
+        <div class="blog-section">
+            <h3 class="blog-title">Create blog:</h3>
+            <form class="blog-form" action="/blogs" method="POST">
+                <textarea name="content" class="blog-textarea" placeholder="Write what you want..." required></textarea>
+                <button type="submit" class="blog-submit">Publish</button>
+            </form>
+        </div>
+    <% } %>
+
+    <h3 class="blog-list-title"><%= isCurrentUser ? "Your Blogs" : userProfile.username + "'s Blogs" %>:</h3>
+    <div id="blog-list" class="blog-container">
+        <% blogs.forEach(blog => { %>
+            <div class="blog-item">
+                <p class="blog-content">
+                    <img src="<%= blog.avatar || '/uploads/image.png' %>" alt="Avatar" class="blog-avatar">
+                    <strong><a class="blog-author"><%= blog.username %></a>:</strong> <%= blog.content %>
+                </p>
+                <small class="blog-date"><%= new Date(blog.createdAt).toLocaleString() %></small>
+
+                <% if (isCurrentUser || currentUser.role === 'admin') { %>
+                    <button onclick="toggleEditForm('<%= blog._id %>')">Edit Blog</button>
+                    <form id="edit-form-<%= blog._id %>" action="/profile/edit-blog/<%= blog._id %>" method="POST" class="blog-form" style="display: none;">
+                        <textarea name="content" required><%= blog.content %></textarea>
+                        <button type="submit">Save</button>
+                    </form>
+                    <form action="/profile/delete-blog/<%= blog._id %>" method="POST">
+                        <button type="submit">Delete Blog</button>
+                    </form>
+                <% } %>
+            </div>
+        <% }) %>
+    </div>
+
+    <script>
+        function toggleEditForm(blogId) {
+            const form = document.getElementById(`edit-form-${blogId}`);
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</div>
+
+</body>
+</html>
